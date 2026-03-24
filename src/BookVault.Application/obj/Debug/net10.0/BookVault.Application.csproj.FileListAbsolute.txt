@@ -1,0 +1,15 @@
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/bin/Debug/net10.0/BookVault.Application.deps.json
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/bin/Debug/net10.0/BookVault.Application.dll
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/bin/Debug/net10.0/BookVault.Application.pdb
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/bin/Debug/net10.0/BookVault.Domain.dll
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/bin/Debug/net10.0/BookVault.Domain.pdb
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/BookVault.Application.csproj.AssemblyReference.cache
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/BookVault.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/BookVault.Application.AssemblyInfoInputs.cache
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/BookVault.Application.AssemblyInfo.cs
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/BookVault.Application.csproj.CoreCompileInputs.cache
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/BookVaul.5B0193AE.Up2Date
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/BookVault.Application.dll
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/refint/BookVault.Application.dll
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/BookVault.Application.pdb
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Application/obj/Debug/net10.0/ref/BookVault.Application.dll

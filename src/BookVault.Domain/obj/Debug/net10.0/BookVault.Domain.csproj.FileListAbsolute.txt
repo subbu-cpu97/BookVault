@@ -1,0 +1,11 @@
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/obj/Debug/net10.0/BookVault.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/obj/Debug/net10.0/BookVault.Domain.AssemblyInfoInputs.cache
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/obj/Debug/net10.0/BookVault.Domain.AssemblyInfo.cs
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/obj/Debug/net10.0/BookVault.Domain.csproj.CoreCompileInputs.cache
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/bin/Debug/net10.0/BookVault.Domain.deps.json
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/bin/Debug/net10.0/BookVault.Domain.dll
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/bin/Debug/net10.0/BookVault.Domain.pdb
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/obj/Debug/net10.0/BookVault.Domain.dll
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/obj/Debug/net10.0/refint/BookVault.Domain.dll
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/obj/Debug/net10.0/BookVault.Domain.pdb
+/Users/subramanyamgundlapalle/Projects/Dotnet/CSharp/BookVault/src/BookVault.Domain/obj/Debug/net10.0/ref/BookVault.Domain.dll
