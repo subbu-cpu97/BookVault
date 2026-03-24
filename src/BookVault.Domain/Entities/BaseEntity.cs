@@ -13,6 +13,8 @@ namespace BookVault.Domain.Entities
         public DateTime CreatedOn { get; set; }
         public DateTime UpdatedOn { get; set; }
 
+        
+
         // Domain events — things that happened in the domain
         // Private backing field — encapsulation (OOP principle)
 
