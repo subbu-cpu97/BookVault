@@ -1,0 +1,82 @@
+# docker-compose.yml
+# Version is omitted — Docker Compose v2 doesn't need it
+
+services:
+
+  # ─────────────────────────────────────────
+  # PostgreSQL Database
+  # Interview answer: "Why not install Postgres natively on Mac?"
+  # Docker gives us environment parity — the same Postgres version
+  # runs on every developer's machine and in production (Azure).
+  # No "works on my machine" problems. Destroy and recreate in seconds.
+  # ─────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine          # alpine = smallest image, production safe
+    container_name: bookvault-postgres
+    restart: unless-stopped            # auto-restart if it crashes, stop only on explicit stop
+    environment:
+      POSTGRES_USER: bookvault
+      POSTGRES_PASSWORD: bookvault123
+      POSTGRES_DB: bookvault_catalog
+    ports:
+      - "5432:5432"                    # host:container — lets VS Code SQLTools connect
+    volumes:
+      - postgres_data:/var/lib/postgresql/data   # named volume — data survives container restarts
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql  # runs on first start
+    networks:
+      - bookvault-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bookvault -d bookvault_catalog"]
+      interval: 10s     # check every 10 seconds
+      timeout: 5s       # fail if no response in 5s
+      retries: 5        # mark unhealthy after 5 failures
+      start_period: 10s # give Postgres 10s to boot before checking
+
+  # ─────────────────────────────────────────
+  # BookVault API
+  # Interview answer: "What is depends_on with condition?"
+  # Without it, the API starts immediately and crashes because
+  # Postgres isn't ready yet. condition: service_healthy waits
+  # until the healthcheck above passes before starting the API.
+  # ─────────────────────────────────────────
+  api:
+    build:
+      context: .                       # Docker build context = project root
+      dockerfile: docker/api/Dockerfile
+    container_name: bookvault-api
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:8080  # listen on 8080 inside container
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=bookvault_catalog;Username=bookvault;Password=bookvault123
+    ports:
+      - "8080:8080"                    # API accessible at http://localhost:8080
+    depends_on:
+      postgres:
+        condition: service_healthy     # wait for postgres healthcheck to pass
+    networks:
+      - bookvault-network
+
+# ─────────────────────────────────────────
+# Named Volumes
+# Interview answer: "What is a Docker named volume?"
+# Containers are ephemeral — their filesystem is destroyed when removed.
+# Named volumes are managed by Docker outside the container lifecycle.
+# postgres_data persists even if you run 'docker compose down'.
+# 'docker compose down -v' removes volumes too — use to reset DB.
+# ─────────────────────────────────────────
+volumes:
+  postgres_data:
+    driver: local
+
+# ─────────────────────────────────────────
+# Networks
+# Interview answer: "Why a custom network?"
+# Services on the same network can reach each other by container name.
+# The API connects to Postgres using hostname 'postgres' — Docker's
+# internal DNS resolves it. Services NOT on the network can't reach them.
+# This is network isolation — security by default.
+# ─────────────────────────────────────────
+networks:
+  bookvault-network:
+    driver: bridge
