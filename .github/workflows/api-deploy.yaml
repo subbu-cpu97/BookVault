@@ -66,7 +66,8 @@ jobs:
           ACR_SERVER: ${{ vars.ACR_SERVER }}
         with:
           registryUrl: ${{ vars.ACR_SERVER }}
-          imageToDeploy: $Acr_SERVER/$IMAGE_NAME:$IMAGE_TAG
+          # imageToDeploy: $Acr_SERVER/$IMAGE_NAME:$IMAGE_TAG
+          imageToDeploy: ${{ env.ACR_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           targetPort: 8080
           ingress: 'external'
           containerAppName: 'bookvaultappdev'
