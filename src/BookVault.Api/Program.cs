@@ -83,8 +83,8 @@ builder.Services.AddHealthChecks();
 builder.Services.AddOpenApi();
 
 
-// builder.Services.AddHealthChecks()
-//     .AddDbContextCheck<BookVaultDbContext>("database");
+builder.Services.AddHealthChecks()
+    .AddDbContextCheck<BookVaultDbContext>("database");
 
 // Global exception handling — catches ValidationException + KeyNotFoundException
 // so every endpoint gets consistent error responses automatically
@@ -102,12 +102,12 @@ var app = builder.Build();
 // BEFORE deploying the new app version. This gives you a rollback window.
 // Never auto-migrate in production — a bad migration + instant deploy = outage.
 
-// if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Docker"))
-// {
-//     using var scope = app.Services.CreateScope();
-//     var db = scope.ServiceProvider.GetRequiredService<BookVaultDbContext>();
-//     await db.Database.MigrateAsync();  // applies any pending migrations
-// }
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Docker"))
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<BookVaultDbContext>();
+    await db.Database.MigrateAsync();  // applies any pending migrations
+}
 
 
 app.UseExceptionHandler();
