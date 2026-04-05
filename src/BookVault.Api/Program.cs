@@ -101,12 +101,13 @@ var app = builder.Build();
 // In production: run migrations as a separate step in your CD pipeline
 // BEFORE deploying the new app version. This gives you a rollback window.
 // Never auto-migrate in production — a bad migration + instant deploy = outage.
-if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Docker"))
-{
-    using var scope = app.Services.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<BookVaultDbContext>();
-    await db.Database.MigrateAsync();  // applies any pending migrations
-}
+
+// if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Docker"))
+// {
+//     using var scope = app.Services.CreateScope();
+//     var db = scope.ServiceProvider.GetRequiredService<BookVaultDbContext>();
+//     await db.Database.MigrateAsync();  // applies any pending migrations
+// }
 
 
 app.UseExceptionHandler();
