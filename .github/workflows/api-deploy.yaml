@@ -26,5 +26,15 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
+      - name: SHA of the commit
+        id: vars
+        run: |
+          calculatedSha=$(git rev-parse --short ${GITHUB_SHA})
+          echo "::set-output name=sha::$calculatedSha"
+
+          
+
+
+
 
       
