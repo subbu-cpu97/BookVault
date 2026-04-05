@@ -72,14 +72,19 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(8080);
+});
+
 builder.Services.AddAuthorization();
 
 
 builder.Services.AddOpenApi();
 
 
-builder.Services.AddHealthChecks()
-    .AddDbContextCheck<BookVaultDbContext>("database");
+// builder.Services.AddHealthChecks()
+//     .AddDbContextCheck<BookVaultDbContext>("database");
 
 // Global exception handling — catches ValidationException + KeyNotFoundException
 // so every endpoint gets consistent error responses automatically
@@ -127,6 +132,7 @@ app.MapScalarApiReference(options =>
 
 app.MapBookEndpoints();
 app.MapAuthorEndpoints();
+app.MapGet("/", () => "Healthy");
 app.MapHealthChecks("/health");
 
 app.Run();
