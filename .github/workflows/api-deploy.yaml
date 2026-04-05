@@ -31,8 +31,10 @@ jobs:
         run: |
           calculatedSha=$(git rev-parse --short ${GITHUB_SHA})
           echo "sha=$calculatedSha" >> $GITHUB_OUTPUT
-          echo "SHA is ${{ steps.vars.outputs.sha }}"
 
+
+      - name: Print SHA
+        run: echo "SHA is ${{ steps.vars.outputs.sha }}"
 
 
 
