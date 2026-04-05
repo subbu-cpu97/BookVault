@@ -33,8 +33,17 @@ jobs:
           echo "sha=$calculatedSha" >> $GITHUB_OUTPUT
 
 
-      - name: Print SHA
-        run: echo "SHA is ${{ steps.vars.outputs.sha }}"
+      # - name: Print SHA
+      #   run: echo "SHA is ${{ steps.vars.outputs.sha }}"
+
+      - name: Build and push Docker image to ACR
+        env:
+          ACR_REGISTRY: ${{ vars.ACR_SERVER }}
+          IMAGE_NAME: bookvault-api
+          IMAGE_TAG: ${{ steps.vars.outputs.short_sha }}
+        run: |
+          docker build -f docker/api/Dockerfile -t $ACR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG  -t $ACR_REGISTRY/$IMAGE_NAME:latest .
+          docker push $ACR_REGISTRY/$IMAGE_NAME --all-tags
 
 
 
