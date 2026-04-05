@@ -63,7 +63,7 @@ jobs:
         env:
           IMAGE_NAME: bookvaultapi
           IMAGE_TAG: ${{ needs.build-and-deploy.outputs.sha }}
-          ACR_SERVER: ${{ vars.ACR_SERVER }}
+          ACR_REGISTRY: ${{ vars.ACR_SERVER }}
         with:
           registryUrl: ${{ vars.ACR_SERVER }}
           # imageToDeploy: $Acr_SERVER/$IMAGE_NAME:$IMAGE_TAG
