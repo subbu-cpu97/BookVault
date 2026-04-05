@@ -41,7 +41,7 @@ jobs:
       - name: Build and push Docker image to ACR
         env:
           ACR_REGISTRY: ${{ vars.ACR_SERVER }}
-          IMAGE_NAME: bookvault-api
+          IMAGE_NAME: bookvaultapi
           IMAGE_TAG: ${{ steps.vars.outputs.sha }}
         run: |
           docker build -f docker/api/Dockerfile -t $ACR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG  -t $ACR_REGISTRY/$IMAGE_NAME:latest .
@@ -61,18 +61,18 @@ jobs:
       - name: build and deploy to Azure Container Service
         uses: azure/container-apps-deploy-action@v1
         env:
-          IMAGE_NAME: bookvault-api
+          IMAGE_NAME: bookvaultapi
           IMAGE_TAG: ${{ needs.build-and-deploy.outputs.sha }}
           ACR_SERVER: ${{ vars.ACR_SERVER }}
         with:
           registryUrl: ${{ vars.ACR_SERVER }}
           imageToDeploy: $Acr_SERVER/$IMAGE_NAME:$IMAGE_TAG
-          targetPost: 8080
+          targetPort: 8080
           ingress: 'external'
           containerAppName: 'bookvaultappdev'
           containerAppEnvironment: 'bookvaultappenvdev'
           resourceGroup: 'bookvault-rg'
-          envirementVariables: |
+          environmentVariables: |
             ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080
 
 
