@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.vars.outputs.sha }}
 
     steps:
       - name: Checkout repository
@@ -46,7 +48,15 @@ jobs:
           docker push $ACR_REGISTRY/$IMAGE_NAME --all-tags
 
 
+  deploy-container-to-ACS:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Login to Azure
+        uses: azure/CLI@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 
       
