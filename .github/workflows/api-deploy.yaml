@@ -54,9 +54,28 @@ jobs:
 
     steps:
       - name: Login to Azure
-        uses: azure/CLI@v1
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: build and deploy to Azure Container Service
+        uses: azure/container-apps-deploy-action@v1
+        env:
+          IMAGE_NAME: bookvault-api
+          IMAGE_TAG: ${{ needs.build-and-deploy.outputs.sha }}
+          ACR_SERVER: ${{ vars.ACR_SERVER }}
+        with:
+          registryUrl: ${{ vars.ACR_SERVER }}
+          imageToDeploy: $Acr_SERVER/$IMAGE_NAME:$IMAGE_TAG
+          targetPost: 8080
+          ingress: 'external'
+          containerAppName: 'bookvaultappdev'
+          containerAppEnvironment: 'bookvaultappenvdev'
+          resourceGroup: 'bookvault-rg'
+          envirementVariables: |
+            ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080
+
+
 
 
       
