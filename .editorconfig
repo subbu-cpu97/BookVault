@@ -1,0 +1,25 @@
+# EditorConfig — enforces consistent code style across all editors
+# Interview answer: "How do you enforce code style in a team?"
+# .editorconfig defines indentation, line endings, and spacing rules.
+# Editors (VS Code, Rider, Visual Studio) read it automatically.
+# dotnet format enforces it in CI — no manual style reviews needed.
+
+root = true
+
+[*]
+indent_style = space
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.cs]
+indent_size = 4
+
+# C# specific rules
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+csharp_new_line_before_open_brace = all
+csharp_prefer_braces = true:warning
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion

@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BookVault.Api/BookVault.Api.csproj" />
+    <Project Path="src/BookVault.Application/BookVault.Application.csproj" />
+    <Project Path="src/BookVault.Domain/BookVault.Domain.csproj" />
+    <Project Path="src/BookVault.Infrastructure/BookVault.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/BookVault.ArchitectureTests/BookVault.ArchitectureTests.csproj" />
+    <Project Path="tests/BookVault.IntegrationTests/BookVault.IntegrationTests.csproj" />
+    <Project Path="tests/BookVault.UnitTests/BookVault.UnitTests.csproj" />
+  </Folder>
+</Solution>

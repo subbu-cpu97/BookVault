@@ -1,0 +1,30 @@
+name: Build and deploy BookValut API
+
+on:
+  push:
+    branches: [main]
+
+# Workflow of the pipeline
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        id: github
+        uses: actions/checkout@v3
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 10.0.x
+      
+      - name: Configure Azure ACR
+        uses: azure/docker-login@v2
+        with:
+          login-server: ${{ vars.ACR_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+
+      
