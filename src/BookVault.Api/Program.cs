@@ -79,7 +79,7 @@ builder.WebHost.ConfigureKestrel(options =>
 
 builder.Services.AddAuthorization();
 
-
+builder.Services.AddHealthChecks();
 builder.Services.AddOpenApi();
 
 
