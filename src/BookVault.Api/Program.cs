@@ -112,7 +112,7 @@ var app = builder.Build();
 
 app.UseExceptionHandler();
 app.UseStatusCodePages();
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.MapOpenApi();
 // app.MapScalarApiReference(options =>
