@@ -17,8 +17,12 @@ public static class BookEndpoints
             .WithTags("Books");
 
         
-           var gp =  app.MapGroup("/books")
-            .WithTags("Books");
+
+
+        group.MapGet("/", GetAllBooks)
+        .WithName("GetAllBooks-new")
+        .WithSummary("Get all books — supports filtering, sorting and pagination new");
+        
 
         group.MapGet("/", GetAllBooks)
         .WithName("GetAllBooks")
