@@ -12,6 +12,11 @@ public static class BookEndpoints
 {
     public static void MapBookEndpoints(this WebApplication app)
     {
+
+           var group = app.MapGroup("/books-new")
+            .WithTags("Books");
+
+        
         var group = app.MapGroup("/books")
             .WithTags("Books");
 
