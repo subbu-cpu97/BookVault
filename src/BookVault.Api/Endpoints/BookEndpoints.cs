@@ -17,7 +17,7 @@ public static class BookEndpoints
             .WithTags("Books");
 
         
-        var group = app.MapGroup("/books")
+           var gp =  app.MapGroup("/books")
             .WithTags("Books");
 
         group.MapGet("/", GetAllBooks)
